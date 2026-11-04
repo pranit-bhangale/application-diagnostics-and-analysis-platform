@@ -6,8 +6,11 @@ spring:
   ai:
     mcp:
       server:
+        enabled: true
         name: diagnostics-mcp-server
         version: 1.0.0
         protocol: STREAMABLE
         type: SYNC
         stdio: false
+        streamable-http:
+          mcp-endpoint: /mcp
