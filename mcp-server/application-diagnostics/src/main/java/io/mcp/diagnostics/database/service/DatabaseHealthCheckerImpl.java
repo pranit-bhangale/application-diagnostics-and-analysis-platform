@@ -3,6 +3,7 @@ package io.mcp.diagnostics.database.service;
 import io.mcp.diagnostics.database.connection.ConnectionLoan;
 import io.mcp.diagnostics.database.dto.DatabaseHealthRequest;
 import io.mcp.diagnostics.database.dto.DatabaseHealthResponse;
+import io.mcp.diagnostics.exception.BusinessException;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,7 @@ public class DatabaseHealthCheckerImpl implements DatabaseHealthChecker {
 
     private static <T> void require(T value, Predicate<T> rule, String message) {
         Optional.ofNullable(value).filter(rule)
-                .orElseThrow(() -> new IllegalArgumentException(message));
+                .orElseThrow(() -> new BusinessException(message));
     }
 
     private static DatabaseHealthResponse success(Probe probe, long elapsedMs) {

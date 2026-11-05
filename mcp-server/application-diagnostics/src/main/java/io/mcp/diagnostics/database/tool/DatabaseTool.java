@@ -40,7 +40,7 @@ public class DatabaseTool {
             @McpToolParam(description = "Database authentication password.") String password,
             @McpToolParam(description = "Connection validation timeout in seconds.", required = false) Integer timeoutSeconds
     ) {
-        return healthChecker.check(DatabaseHealthRequest.builder()
+        return this.healthChecker.check(DatabaseHealthRequest.builder()
                 .dbType(dbType)
                 .host(host)
                 .port(port)
